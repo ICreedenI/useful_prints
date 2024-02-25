@@ -33,7 +33,7 @@ def get_percentage_as_fitted_string(
 def progress_printer(
     count: int, total: int, pre_string: str = "Progress: ", post_string: str = ""
 ):
-    TermAct.Clear_Current_Line()
+    TermAct.clear_current_line_action()
     print(
         f"{pre_string}{count} / {total}    ({get_percentage_as_fitted_string(count, total)}){post_string}",
         end="",
@@ -55,7 +55,7 @@ def main_and_sub_progress_printer(
     subpost_string: str = "",
 ):
     if maincount == 0 and subcount == 0:
-        print(TermAct.Hide_Cursor(), end="")
+        print(TermAct.hide_cursor(), end="")
 
     if post_string == "":
         lines = 3
@@ -63,17 +63,17 @@ def main_and_sub_progress_printer(
         lines = 4 + post_string.count("\n")
     if maincount != 0 and subcount != 0:
         for i in range(lines):
-            colored_print(TermAct.Cursor_Previous_Line, end="")
+            colored_print(TermAct.cursor_previous_line, end="")
 
     try:
         print(f"{pre_string}")
         print(
             f"{mainpre_string}{maincount} / {maintotal}    ({get_percentage_as_fitted_string(maincount, maintotal)}){mainpost_string}"
-            + TermAct.Erase_in_Line()
+            + TermAct.erase_in_line()
         )
         print(
             f"{subpre_string}{subcount} / {subtotal}    ({get_percentage_as_fitted_string(subcount, subtotal)}){subpost_string}"
-            + TermAct.Erase_in_Line()
+            + TermAct.erase_in_line()
         )
         if post_string != "":
             print(post_string)
@@ -82,4 +82,4 @@ def main_and_sub_progress_printer(
         print_exception_details(e)
         print("\n" * 20)
     if maincount == maintotal and subcount == subtotal:
-        print(TermAct.Show_Cursor(), end="")
+        print(TermAct.show_cursor(), end="")

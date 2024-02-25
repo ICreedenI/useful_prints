@@ -169,7 +169,7 @@ def pretty_print_sym_double_list(
                     + reset
                 )
 
-        s += s_color + TermAct.Cursor_Back + "]" + reset
+        s += s_color + TermAct.cursor_back + "]" + reset
         if row_index != len_data - 1:
             if print_list_name:
                 s += s_color + "," + reset
